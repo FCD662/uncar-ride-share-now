@@ -69,6 +69,10 @@
   .text-graphite {
     color: hsl(var(--graphite-gray));
   }
+  
+  .bg-graphite {
+    background-color: hsl(var(--graphite-gray));
+  }
 }
 
 /* Premium rental styles */

@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -143,7 +144,7 @@ const Index = () => {
                         {[...Array(5)].map((_, i) => (
                           <StarIcon 
                             key={i} 
-                            className={`h-4 w-4 ${i < Math.floor(car.rating || 5)} ? 'text-gold' : 'text-gray-500'`} 
+                            className={`h-4 w-4 ${i < Math.floor(car.rating || 5) ? 'text-gold' : 'text-gray-500'}`}
                             fill={i < Math.floor(car.rating || 5) ? 'currentColor' : 'none'} 
                           />
                         ))}
