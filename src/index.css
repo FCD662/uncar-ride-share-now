@@ -34,6 +34,14 @@
     --ring: 122 39% 49%;
 
     --radius: 0.75rem;
+    
+    /* Premium car rental colors */
+    --deep-black: 0 0% 0%;
+    --graphite-gray: 0 0% 13%;
+    --midnight-blue: 196 90% 43%;
+    --burgundy: 292 83% 58%;
+    --gold: 28 92% 53%;
+    --neon-blue: 189 76% 56%;
   }
 }
 
@@ -55,4 +63,136 @@
   .car-animation {
     position: absolute;
   }
+}
+
+/* Premium rental styles */
+.parallax-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.parallax-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+  transform: translateZ(0);
+  z-index: -1;
+}
+
+.gradient-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 100%);
+  z-index: 0;
+}
+
+.content-block {
+  @apply py-24 relative;
+}
+
+.content-block-light {
+  @apply bg-white text-graphite;
+}
+
+.content-block-dark {
+  @apply bg-graphite text-white;
+}
+
+.premium-btn {
+  @apply px-8 py-3 rounded-full font-medium text-lg transition-all duration-300;
+}
+
+.premium-btn:hover {
+  @apply transform scale-105 shadow-lg;
+}
+
+.premium-btn-primary {
+  @apply bg-gold text-deep-black;
+}
+
+.premium-btn-primary:hover {
+  @apply bg-gold/90;
+}
+
+.premium-btn-outline {
+  @apply border-2 border-white text-white;
+}
+
+.premium-btn-outline:hover {
+  @apply bg-white/10;
+}
+
+.asymmetric-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8;
+}
+
+.asymmetric-grid > div:nth-child(3n+1) {
+  @apply md:col-span-1 lg:col-span-2;
+}
+
+.asymmetric-grid > div:nth-child(3n+3) {
+  @apply md:col-span-2 lg:col-span-1;
+}
+
+.testimonial-card {
+  @apply bg-white/10 backdrop-blur-md rounded-xl p-6 shadow-lg;
+}
+
+.location-card {
+  @apply rounded-xl overflow-hidden shadow-xl;
+}
+
+@keyframes car-drive {
+  0% { transform: translateX(-100%) scale(0.8); }
+  100% { transform: translateX(100%) scale(1.2); }
+}
+
+.animated-car {
+  animation: car-drive 15s linear infinite;
+}
+
+@keyframes floating {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
+
+.float-animation {
+  animation: floating 5s ease-in-out infinite;
+}
+
+.glass-card {
+  @apply bg-white/10 backdrop-blur-md border border-white/20 rounded-xl shadow-xl;
+}
+
+.text-gradient {
+  @apply bg-clip-text text-transparent;
+  background-image: linear-gradient(to right, #F97316, #D946EF);
+}
+
+.featured-car {
+  position: relative;
+  height: 100%;
+  transition: transform 0.5s ease;
+}
+
+.featured-car:hover {
+  transform: translateY(-10px);
+}
+
+.video-container {
+  @apply rounded-xl overflow-hidden shadow-xl relative;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+}
+
+.video-container iframe {
+  @apply absolute top-0 left-0 w-full h-full;
 }
