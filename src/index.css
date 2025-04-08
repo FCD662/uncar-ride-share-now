@@ -65,6 +65,12 @@
   }
 }
 
+@layer utilities {
+  .text-graphite {
+    color: hsl(var(--graphite-gray));
+  }
+}
+
 /* Premium rental styles */
 .parallax-section {
   position: relative;

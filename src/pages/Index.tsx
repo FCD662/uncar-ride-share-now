@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -135,7 +134,7 @@ const Index = () => {
                         className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
                       />
                       <div className="absolute top-3 right-3 bg-gold text-black font-bold px-3 py-1 rounded-full text-sm">
-                        ${car.pricePerDay}/day
+                        ${car.price}/day
                       </div>
                     </div>
                     <div className="p-6">
@@ -144,11 +143,11 @@ const Index = () => {
                         {[...Array(5)].map((_, i) => (
                           <StarIcon 
                             key={i} 
-                            className={`h-4 w-4 ${i < Math.floor(car.rating) ? 'text-gold' : 'text-gray-500'}`} 
-                            fill={i < Math.floor(car.rating) ? 'currentColor' : 'none'} 
+                            className={`h-4 w-4 ${i < Math.floor(car.rating || 5)} ? 'text-gold' : 'text-gray-500'`} 
+                            fill={i < Math.floor(car.rating || 5) ? 'currentColor' : 'none'} 
                           />
                         ))}
-                        <span className="text-sm text-gray-400 ml-1">({car.reviews})</span>
+                        <span className="text-sm text-gray-400 ml-1">({car.reviewCount || 0})</span>
                       </div>
                       <div className="flex flex-wrap gap-2 mb-4">
                         {car.features.slice(0, 3).map((feature, idx) => (
