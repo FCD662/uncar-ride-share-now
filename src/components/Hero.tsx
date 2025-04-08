@@ -1,164 +1,85 @@
-
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { Calendar } from "@/components/ui/calendar";
-import { format } from "date-fns";
-import { Car, Calendar as CalendarIcon } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { useEffect } from "react";
+import { motion } from "framer-motion";
+import LuxurySearchForm from "./LuxurySearchForm";
 
 const Hero = () => {
-  const [city, setCity] = useState<string>("");
-  const [district, setDistrict] = useState<string>("");
-  const [startDate, setStartDate] = useState<Date>();
-  const [endDate, setEndDate] = useState<Date>();
+  // Parallax effect on scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY || window.pageYOffset;
+      const heroSection = document.querySelector('.hero-section');
+      const heroContent = document.querySelector('.hero-content');
+      
+      if (heroSection && heroContent) {
+        // Subtle parallax effect
+        heroSection.setAttribute('style', `transform: translateY(${scrollY * 0.15}px)`);
+        // Content stays in place
+        heroContent.setAttribute('style', `transform: translateY(${scrollY * -0.08}px)`);
+      }
+    };
 
-  const cities = ["New York", "Los Angeles", "Chicago", "Miami", "San Francisco"];
-  
-  const districts: Record<string, string[]> = {
-    "New York": ["Manhattan", "Brooklyn", "Queens", "Bronx", "Staten Island"],
-    "Los Angeles": ["Downtown", "Hollywood", "Venice", "Santa Monica"],
-    "Chicago": ["The Loop", "River North", "Wicker Park", "Lincoln Park"],
-    "Miami": ["South Beach", "Wynwood", "Downtown", "Brickell"],
-    "San Francisco": ["Union Square", "Mission", "SoMa", "Castro"],
-  };
-
-  const handleSearch = () => {
-    console.log("Searching with criteria:", { city, district, startDate, endDate });
-    // Here you would typically navigate to search results
-  };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <div className="relative bg-gradient-to-br from-uncar-50 to-white py-16 md:py-24 overflow-hidden">
-      {/* Animated car background */}
-      <div className="absolute inset-0 overflow-hidden opacity-10">
-        <div className="animate-car-move absolute top-1/4 left-1/4">
-          <Car className="h-32 w-32 text-uncar-300" />
-        </div>
-        <div className="animate-car-move absolute bottom-1/4 right-1/4" style={{ animationDelay: "-3s" }}>
-          <Car className="h-24 w-24 text-uncar-400" />
-        </div>
-        <div className="animate-float absolute top-1/3 right-1/3">
-          <Car className="h-40 w-40 text-uncar-200" />
+    <div className="relative h-screen w-full overflow-hidden bg-black">
+      {/* Hero background - video or image */}
+      <div className="absolute inset-0 hero-section">
+        <div className="absolute inset-0 bg-cover bg-center bg-no-repeat h-full w-full"
+            style={{ backgroundImage: "url('/placeholder.svg')" }}>
+          {/* Could be replaced with a real video:
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="object-cover w-full h-full"
+          >
+            <source src="/luxury-car.mp4" type="video/mp4" />
+          </video> 
+          */}
         </div>
       </div>
 
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-3xl mx-auto text-center mb-12">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-800">
-            Rent or Share Cars Easily with <span className="text-uncar-500">Uncar</span>
-          </h1>
-          <p className="text-lg md:text-xl text-gray-600 mb-8">
-            Find the perfect car for any occasion or share your vehicle and earn extra income
-          </p>
+      {/* Dark overlay for better text contrast */}
+      <div className="hero-video-overlay"></div>
+      <div className="hero-gradient-overlay"></div>
 
-          {/* Search form */}
-          <div className="bg-white rounded-xl shadow-lg p-6 md:p-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-              <div>
-                <label htmlFor="city" className="block text-sm font-medium text-gray-700 mb-1 text-left">
-                  City
-                </label>
-                <Select value={city} onValueChange={(value) => {
-                  setCity(value);
-                  setDistrict("");
-                }}>
-                  <SelectTrigger className="w-full">
-                    <SelectValue placeholder="Select city" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {cities.map((city) => (
-                      <SelectItem key={city} value={city}>
-                        {city}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-
-              <div>
-                <label htmlFor="district" className="block text-sm font-medium text-gray-700 mb-1 text-left">
-                  District
-                </label>
-                <Select value={district} onValueChange={setDistrict} disabled={!city}>
-                  <SelectTrigger className="w-full">
-                    <SelectValue placeholder="Select district" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {city && districts[city]?.map((district) => (
-                      <SelectItem key={district} value={district}>
-                        {district}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1 text-left">
-                  Start Date
-                </label>
-                <Popover>
-                  <PopoverTrigger asChild>
-                    <Button
-                      variant={"outline"}
-                      className={cn(
-                        "w-full justify-start text-left font-normal",
-                        !startDate && "text-muted-foreground"
-                      )}
-                    >
-                      <CalendarIcon className="mr-2 h-4 w-4" />
-                      {startDate ? format(startDate, "PPP") : <span>Pick a date</span>}
-                    </Button>
-                  </PopoverTrigger>
-                  <PopoverContent className="w-auto p-0 pointer-events-auto">
-                    <Calendar
-                      mode="single"
-                      selected={startDate}
-                      onSelect={setStartDate}
-                      initialFocus
-                    />
-                  </PopoverContent>
-                </Popover>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1 text-left">
-                  End Date
-                </label>
-                <Popover>
-                  <PopoverTrigger asChild>
-                    <Button
-                      variant={"outline"}
-                      className={cn(
-                        "w-full justify-start text-left font-normal",
-                        !endDate && "text-muted-foreground"
-                      )}
-                    >
-                      <CalendarIcon className="mr-2 h-4 w-4" />
-                      {endDate ? format(endDate, "PPP") : <span>Pick a date</span>}
-                    </Button>
-                  </PopoverTrigger>
-                  <PopoverContent className="w-auto p-0 pointer-events-auto">
-                    <Calendar
-                      mode="single"
-                      selected={endDate}
-                      onSelect={setEndDate}
-                      disabled={(date) => date < (startDate || new Date())}
-                      initialFocus
-                    />
-                  </PopoverContent>
-                </Popover>
-              </div>
-            </div>
-
-            <Button 
-              className="mt-6 bg-uncar-500 hover:bg-uncar-600 text-white w-full md:w-auto px-8"
-              onClick={handleSearch}
-            >
-              Search Cars
-            </Button>
+      {/* Hero content */}
+      <div className="relative z-20 container mx-auto px-4 h-full flex flex-col justify-center hero-content">
+        <div className="max-w-4xl">
+          <motion.h2 
+            className="text-sm sm:text-base text-white/80 uppercase tracking-[0.2em] mb-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            Luxury Car Experience
+          </motion.h2>
+          
+          <motion.h1 
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light text-white mb-6 leading-tight"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.4 }}
+          >
+            Drive Luxury. <br />
+            <span className="font-medium">Rent Power.</span>
+          </motion.h1>
+          
+          <motion.p 
+            className="text-white/70 mb-12 text-lg max-w-xl"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.6 }}
+          >
+            Experience the extraordinary with our premium fleet of luxury vehicles, 
+            crafted for those who demand nothing but excellence.
+          </motion.p>
+          
+          <div className="bg-black/30 backdrop-blur-sm p-6 md:p-8 rounded-sm border border-white/10">
+            <LuxurySearchForm />
           </div>
         </div>
       </div>
