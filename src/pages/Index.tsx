@@ -64,6 +64,50 @@ const premiumCars: Car[] = [
   }
 ];
 
+// Define sample car data for FeaturedCars component
+const featuredCarsData = [
+  {
+    id: "4",
+    name: "Toyota Camry",
+    price: 65,
+    city: "New York",
+    year: 2022,
+    carClass: "Sedan",
+    bodyType: "Sedan",
+    engineType: "Hybrid",
+    seats: 5,
+    features: [{ name: "GPS" }, { name: "Bluetooth" }, { name: "Cruise Control" }],
+    image: "/placeholder.svg"
+  },
+  {
+    id: "5",
+    name: "Honda CR-V",
+    price: 75,
+    city: "Los Angeles",
+    year: 2022,
+    carClass: "SUV",
+    bodyType: "SUV",
+    engineType: "Gasoline",
+    seats: 5,
+    features: [{ name: "GPS" }, { name: "Bluetooth" }, { name: "Backup Camera" }],
+    image: "/placeholder.svg"
+  },
+  {
+    id: "6",
+    name: "Ford Mustang",
+    price: 120,
+    city: "Miami",
+    year: 2021,
+    carClass: "Sports",
+    bodyType: "Coupe",
+    engineType: "Gasoline",
+    seats: 4,
+    features: [{ name: "Leather Seats" }, { name: "Premium Sound" }, { name: "Convertible" }],
+    image: "/placeholder.svg",
+    discountPercentage: 15
+  }
+];
+
 const locations = [
   {
     name: "New York",
@@ -113,7 +157,7 @@ const Index = () => {
       <Hero />
       <Features />
       <HowItWorks />
-      <FeaturedCars />
+      <FeaturedCars title="Featured Cars" cars={featuredCarsData} />
 
       {/* Premium Rentals Section */}
       <section className="py-20 bg-graphite text-white">
