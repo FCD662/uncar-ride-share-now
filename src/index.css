@@ -73,6 +73,18 @@
   .bg-graphite {
     background-color: hsl(var(--graphite-gray));
   }
+  
+  .text-deep-black {
+    color: hsl(var(--deep-black));
+  }
+  
+  .bg-gold {
+    background-color: hsl(var(--gold));
+  }
+
+  .text-gold {
+    color: hsl(var(--gold));
+  }
 }
 
 /* Premium rental styles */
