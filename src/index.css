@@ -98,18 +98,40 @@
     @apply absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10;
   }
   
+  .hero-vignette-overlay {
+    box-shadow: inset 0 0 200px rgba(0, 0, 0, 0.9);
+  }
+  
   .luxury-input {
     @apply bg-transparent border-b border-white/30 focus:border-white px-0 py-2 text-white placeholder:text-white/50 focus:outline-none transition-all duration-300;
   }
   
-  .luxury-btn {
-    @apply bg-white text-black hover:bg-white/90 transition-all duration-300 px-8 py-3 uppercase tracking-wider font-medium;
+  .luxury-select-trigger {
+    @apply bg-transparent border-white/20 text-white hover:bg-black/20 transition-all duration-300;
   }
   
-  .luxury-btn-outline {
-    @apply border border-white/30 hover:border-white hover:bg-white/10 text-white transition-all duration-300 px-6 py-2;
+  .luxury-select-content {
+    @apply bg-black/90 border border-white/20 text-white backdrop-blur-lg;
   }
   
+  .luxury-date-button {
+    @apply bg-transparent border-white/20 text-white hover:bg-black/20 hover:border-white/40 transition-all duration-300;
+  }
+  
+  .luxury-calendar-content {
+    @apply bg-black/90 border border-white/20 backdrop-blur-lg;
+  }
+  
+  .luxury-search-btn {
+    @apply bg-white text-black hover:bg-white/90 transition-all duration-300 py-3 uppercase tracking-wider;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  }
+
+  .luxury-search-btn:hover {
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
+  }
+  
+  /* Text animations */
   .text-slide-in {
     @apply opacity-0 translate-x-10;
     animation: slideIn 0.8s forwards;
