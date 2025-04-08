@@ -4,13 +4,12 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Star as StarIcon, MapPin } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import Features from "@/components/Features";
+import WhyChooseUs from "@/components/WhyChooseUs";
 import HowItWorks from "@/components/HowItWorks";
 import FeaturedCars from "@/components/FeaturedCars";
 import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 
-// Extended Car interface to include rating and reviewCount
 interface Car {
   id: string;
   name: string;
@@ -24,7 +23,6 @@ interface Car {
   reviewCount?: number;
 }
 
-// Sample cars data with ratings
 const premiumCars: Car[] = [
   {
     id: "1",
@@ -64,7 +62,6 @@ const premiumCars: Car[] = [
   }
 ];
 
-// Define sample car data for FeaturedCars component
 const featuredCarsData = [
   {
     id: "4",
@@ -155,11 +152,10 @@ const Index = () => {
     <div className="min-h-screen">
       <Navbar />
       <Hero />
-      <Features />
+      <WhyChooseUs />
       <HowItWorks />
       <FeaturedCars title="Featured Cars" cars={featuredCarsData} />
 
-      {/* Premium Rentals Section */}
       <section className="py-20 bg-graphite text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center mb-16">
@@ -224,7 +220,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Locations Section */}
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center mb-16">
@@ -263,7 +258,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Testimonials Section */}
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center mb-16">

@@ -84,6 +84,14 @@
   .bg-gold\/90 {
     background-color: hsl(var(--gold) / 0.9);
   }
+  
+  .bg-gold\/30 {
+    background-color: hsl(var(--gold) / 0.3);
+  }
+  
+  .bg-gold\/20 {
+    background-color: hsl(var(--gold) / 0.2);
+  }
 
   .text-gold {
     color: hsl(var(--gold));
