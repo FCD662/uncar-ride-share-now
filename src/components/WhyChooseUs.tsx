@@ -1,6 +1,5 @@
-
 import { useState, useEffect } from "react";
-import { Car, Shield, Calendar, ConceirgeBell } from "lucide-react";
+import { Car, Shield, Calendar, ConciergeBell } from "lucide-react";
 import { motion } from "framer-motion";
 
 const WhyChooseUs = () => {
@@ -42,13 +41,12 @@ const WhyChooseUs = () => {
       description: "Hourly, daily, or long-term rentals tailored to your schedule with seamless reservation process."
     },
     {
-      icon: <ConceirgeBell className="h-12 w-12" strokeWidth={1.5} />,
+      icon: <ConciergeBell className="h-12 w-12" strokeWidth={1.5} />,
       title: "Concierge Support",
       description: "24/7 customer service just a message away, ready to assist with any request or inquiry."
     }
   ];
 
-  // Animation variants
   const containerVariants = {
     hidden: {},
     visible: {
@@ -72,7 +70,6 @@ const WhyChooseUs = () => {
 
   return (
     <section className="why-choose-us py-24 bg-gradient-to-b from-graphite to-black relative overflow-hidden">
-      {/* Subtle background pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{ 
           backgroundImage: "radial-gradient(circle at 25px 25px, white 1px, transparent 0)", 
