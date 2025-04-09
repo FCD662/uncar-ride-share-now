@@ -1,3 +1,4 @@
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -39,4 +40,25 @@
 
 .read-the-docs {
   color: #888;
+}
+
+/* Premium Car Card Animation */
+.featured-car-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.featured-car-image {
+  transition: transform 0.8s ease;
+}
+
+.featured-car-card:hover .featured-car-image {
+  transform: scale(1.05);
+}
+
+.featured-car-badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 10;
 }

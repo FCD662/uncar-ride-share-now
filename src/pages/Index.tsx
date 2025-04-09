@@ -9,6 +9,7 @@ import HowItWorks from "@/components/HowItWorks";
 import FeaturedCars from "@/components/FeaturedCars";
 import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
+import { premiumCars } from "@/data/cars";
 
 interface Car {
   id: string;
@@ -23,124 +24,6 @@ interface Car {
   reviewCount?: number;
 }
 
-const premiumCars: Car[] = [
-  {
-    id: "1",
-    name: "Mercedes-Benz S-Class",
-    image: "/placeholder.svg",
-    type: "Luxury Sedan",
-    price: 299,
-    year: 2023,
-    seats: 5,
-    transmission: "Automatic",
-    rating: 4.9,
-    reviewCount: 142
-  },
-  {
-    id: "2",
-    name: "BMW 7 Series",
-    image: "/placeholder.svg",
-    type: "Luxury Sedan",
-    price: 289,
-    year: 2023,
-    seats: 5,
-    transmission: "Automatic",
-    rating: 4.8,
-    reviewCount: 128
-  },
-  {
-    id: "3",
-    name: "Audi A8",
-    image: "/placeholder.svg",
-    type: "Luxury Sedan",
-    price: 279,
-    year: 2023,
-    seats: 5,
-    transmission: "Automatic",
-    rating: 4.7,
-    reviewCount: 116
-  }
-];
-
-const featuredCarsData = [
-  {
-    id: "4",
-    name: "Toyota Camry",
-    price: 65,
-    city: "New York",
-    year: 2022,
-    carClass: "Sedan",
-    bodyType: "Sedan",
-    engineType: "Hybrid",
-    seats: 5,
-    features: [{ name: "GPS" }, { name: "Bluetooth" }, { name: "Cruise Control" }],
-    image: "/placeholder.svg"
-  },
-  {
-    id: "5",
-    name: "Honda CR-V",
-    price: 75,
-    city: "Los Angeles",
-    year: 2022,
-    carClass: "SUV",
-    bodyType: "SUV",
-    engineType: "Gasoline",
-    seats: 5,
-    features: [{ name: "GPS" }, { name: "Bluetooth" }, { name: "Backup Camera" }],
-    image: "/placeholder.svg"
-  },
-  {
-    id: "6",
-    name: "Ford Mustang",
-    price: 120,
-    city: "Miami",
-    year: 2021,
-    carClass: "Sports",
-    bodyType: "Coupe",
-    engineType: "Gasoline",
-    seats: 4,
-    features: [{ name: "Leather Seats" }, { name: "Premium Sound" }, { name: "Convertible" }],
-    image: "/placeholder.svg",
-    discountPercentage: 15
-  }
-];
-
-const locations = [
-  {
-    name: "New York",
-    image: "/placeholder.svg",
-    description: "Explore the city that never sleeps with our premium car rentals.",
-  },
-  {
-    name: "Los Angeles",
-    image: "/placeholder.svg",
-    description: "Discover sunny LA in style with our wide selection of vehicles.",
-  },
-  {
-    name: "Miami",
-    image: "/placeholder.svg",
-    description: "Experience the vibrant nightlife and beaches of Miami with our luxury cars.",
-  },
-];
-
-const testimonials = [
-  {
-    name: "Alice Johnson",
-    review: "Uncar made renting a car so easy and enjoyable. The service was top-notch!",
-    rating: 5,
-  },
-  {
-    name: "Bob Smith",
-    review: "I loved the variety of cars available. Found the perfect one for my weekend getaway.",
-    rating: 4,
-  },
-  {
-    name: "Charlie Brown",
-    review: "Great prices and excellent customer support. Will definitely use Uncar again.",
-    rating: 5,
-  },
-];
-
 const Index = () => {
   const [isMounted, setIsMounted] = useState(false);
 
@@ -154,7 +37,7 @@ const Index = () => {
       <Hero />
       <WhyChooseUs />
       <HowItWorks />
-      <FeaturedCars title="Featured Cars" cars={featuredCarsData} />
+      <FeaturedCars title="Our Premium Collection" cars={premiumCars} />
 
       <section className="py-20 bg-graphite text-white">
         <div className="container mx-auto px-4">
