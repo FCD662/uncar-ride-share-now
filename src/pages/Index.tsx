@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -13,19 +14,21 @@ import { premiumCars } from "@/data/cars";
 import { locations } from "@/data/locations";
 import { testimonials } from "@/data/testimonials";
 
+// Updated Car interface to match the one in src/data/cars.ts
+// Making transmission optional to resolve the TypeScript error
 interface Car {
   id: string;
   name: string;
   image: string;
-  type?: string; // Make optional since we fallback to bodyType
+  type?: string;
   price: number;
   year: number;
   seats: number;
-  transmission: string;
-  rating?: number; // Add this property as optional
-  reviewCount?: number; // Add this property as optional
-  carClass?: string; // Add this property as optional
-  bodyType?: string; // Add this property as optional
+  transmission?: string; // Changed from required to optional
+  rating?: number;
+  reviewCount?: number;
+  carClass?: string;
+  bodyType?: string;
 }
 
 const Index = () => {
