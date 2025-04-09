@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -10,18 +11,22 @@ import FeaturedCars from "@/components/FeaturedCars";
 import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { premiumCars } from "@/data/cars";
+import { locations } from "@/data/locations";
+import { testimonials } from "@/data/testimonials";
 
 interface Car {
   id: string;
   name: string;
   image: string;
-  type: string;
+  type?: string;
   price: number;
   year: number;
   seats: number;
   transmission: string;
   rating?: number;
   reviewCount?: number;
+  carClass?: string;
+  bodyType?: string;
 }
 
 const Index = () => {
@@ -72,7 +77,7 @@ const Index = () => {
                     <h3 className="text-xl font-bold">{car.name}</h3>
                     <span className="text-xl font-bold">${car.price}<span className="text-sm opacity-70">/day</span></span>
                   </div>
-                  <p className="text-sm opacity-70 mb-4">{car.type} • {car.year} • {car.seats} Seats • {car.transmission}</p>
+                  <p className="text-sm opacity-70 mb-4">{car.bodyType || car.type} • {car.year} • {car.seats} Seats • {car.transmission}</p>
                   
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-1">
