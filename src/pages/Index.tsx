@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -56,7 +55,7 @@ const Index = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {premiumCars.map((car) => (
+            {premiumCars.map((car: Car) => (
               <motion.div 
                 key={car.id} 
                 className="featured-car glass-card"
