@@ -18,15 +18,15 @@ interface Car {
   id: string;
   name: string;
   image: string;
-  type?: string;
+  type?: string; // Make optional since we fallback to bodyType
   price: number;
   year: number;
   seats: number;
   transmission: string;
-  rating?: number;
-  reviewCount?: number;
-  carClass?: string;
-  bodyType?: string;
+  rating?: number; // Add this property as optional
+  reviewCount?: number; // Add this property as optional
+  carClass?: string; // Add this property as optional
+  bodyType?: string; // Add this property as optional
 }
 
 const Index = () => {
