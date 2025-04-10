@@ -19,12 +19,19 @@ interface CarData {
   discountPercentage?: number;
 }
 
+interface Location {
+  name: string;
+  image: string;
+  description: string;
+}
+
 interface FeaturedCarsProps {
   title: string;
   cars: CarData[];
+  locations?: Location[]; // Make this optional
 }
 
-const FeaturedCars = ({ title, cars }: FeaturedCarsProps) => {
+const FeaturedCars = ({ title, cars, locations = [] }: FeaturedCarsProps) => {
   const [scrollPosition, setScrollPosition] = useState(0);
   const cardWidth = 300; // Approximate width of each card + margin
 

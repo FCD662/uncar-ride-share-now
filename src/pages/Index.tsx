@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -15,13 +16,15 @@ interface Car {
   id: string;
   name: string;
   image: string;
-  type: string;
+  type?: string;
   price: number;
   year: number;
   seats: number;
-  transmission: string;
+  transmission?: string;
   rating?: number;
   reviewCount?: number;
+  carClass?: string;
+  bodyType?: string;
 }
 
 // Sample cars data with ratings
@@ -108,7 +111,7 @@ const featuredCarsData = [
   }
 ];
 
-const locations = [
+const locationsData = [
   {
     name: "New York",
     image: "/placeholder.svg",
@@ -157,7 +160,7 @@ const Index = () => {
       <Hero />
       <Features />
       <HowItWorks />
-      <FeaturedCars title="Featured Cars" cars={featuredCarsData} />
+      <FeaturedCars title="Featured Cars" cars={featuredCarsData} locations={locationsData} />
 
       {/* Premium Rentals Section */}
       <section className="py-20 bg-graphite text-white">
@@ -237,7 +240,7 @@ const Index = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {locations.map((location, index) => (
+            {locationsData.map((location, index) => (
               <motion.div
                 key={index}
                 className="location-card"
