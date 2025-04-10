@@ -42,9 +42,13 @@ const Hero = () => {
 
   return (
     <div className="relative h-screen w-full overflow-hidden bg-black">
-      {/* Coastal road GIF background */}
+      {/* Premium video background */}
       <div className="absolute inset-0 hero-background">
-        <div className="absolute inset-0 bg-cover bg-center bg-no-repeat h-full w-full">
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat h-full w-full"
+          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=2850&q=80')" }}
+        >
+          {/* For video implementation:
           <video
             autoPlay
             loop
@@ -52,25 +56,27 @@ const Hero = () => {
             playsInline
             className="object-cover w-full h-full filter brightness-75"
           >
-            <source src="https://assets.mixkit.co/videos/preview/mixkit-car-driving-on-a-coastal-road-at-sunset-31863-large.mp4" type="video/mp4" />
+            <source src="/luxury-car-night.mp4" type="video/mp4" />
           </video>
+          */}
         </div>
       </div>
 
       {/* Enhanced dark overlays for dramatic effect */}
-      <div className="hero-video-overlay absolute inset-0 bg-black/40 z-10"></div>
+      <div className="hero-video-overlay absolute inset-0 bg-black/50 z-10"></div>
       <div className="hero-gradient-overlay absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent z-10"></div>
+      <div className="hero-vignette-overlay absolute inset-0 z-10"></div>
 
       {/* Hero content */}
-      <div className="relative z-20 container mx-auto px-4 h-full flex flex-col justify-center items-center hero-content">
-        <div className="max-w-4xl text-center">
+      <div className="relative z-20 container mx-auto px-4 h-full flex flex-col justify-center hero-content">
+        <div className="max-w-4xl mx-auto md:mx-0">
           <motion.h2 
-            className="text-sm sm:text-base text-primary/90 uppercase tracking-[0.3em] mb-4 font-light"
+            className="text-sm sm:text-base text-white/70 uppercase tracking-[0.3em] mb-4 font-light"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Eco-friendly Transportation
+            Elite Automotive Experience
           </motion.h2>
           
           <motion.h1 
@@ -79,22 +85,22 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.4 }}
           >
-            The journey is <br />
-            <span className="font-medium text-primary">greener</span> on our side
+            Precision Engineering. <br />
+            <span className="font-medium">Unleashed.</span>
           </motion.h1>
           
           <motion.p 
-            className="text-white/80 mb-12 text-lg max-w-xl mx-auto"
+            className="text-white/70 mb-12 text-lg max-w-xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.6 }}
           >
-            Discover our premium collection of eco-friendly vehicles designed for comfort
-            and sustainability on any journey you take.
+            Experience the extraordinary with our curated collection of the world's most 
+            exclusive vehicles, crafted for the most discerning drivers.
           </motion.p>
           
           <motion.div
-            className="hero-search-container backdrop-blur-md bg-black/30 border border-primary/20 rounded-lg shadow-2xl p-6 md:p-8 w-full max-w-4xl mx-auto transition-all duration-300"
+            className="hero-search-container backdrop-blur-md bg-black/40 border border-white/10 rounded-sm shadow-2xl p-6 md:p-8 lg:p-10 w-full max-w-4xl transition-all duration-300"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
@@ -112,8 +118,8 @@ const Hero = () => {
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5, duration: 0.6 }}
       >
-        <span className="text-primary text-sm tracking-wider mb-2">EXPLORE</span>
-        <ChevronDown className="text-primary animate-bounce h-6 w-6" />
+        <span className="text-white/70 text-sm tracking-wider mb-2">EXPLORE</span>
+        <ChevronDown className="text-white/70 animate-bounce h-6 w-6" />
       </motion.div>
     </div>
   );

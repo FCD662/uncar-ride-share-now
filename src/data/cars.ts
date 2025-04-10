@@ -1,3 +1,4 @@
+
 export interface Car {
   id: string;
   name: string;
@@ -11,11 +12,6 @@ export interface Car {
   features: { name: string }[];
   image: string;
   discountPercentage?: number;
-  isPopular?: boolean;
-  isNew?: boolean;
-  horsepower?: number;
-  acceleration?: string;
-  transmission?: string;
 }
 
 export const popularCars: Car[] = [
@@ -37,10 +33,6 @@ export const popularCars: Car[] = [
       { name: "360° Camera" },
     ],
     image: "https://images.unsplash.com/photo-1560958089-b8a1929cea89?auto=format&fit=crop&w=800&q=80",
-    isPopular: true,
-    horsepower: 283,
-    acceleration: "5.3s",
-    transmission: "Automatic",
   },
   {
     id: "2",
@@ -154,9 +146,6 @@ export const specialDeals: Car[] = [
     ],
     image: "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=800&q=80",
     discountPercentage: 15,
-    horsepower: 150,
-    acceleration: "8.5s",
-    transmission: "Manual",
   },
   {
     id: "8",
@@ -214,100 +203,5 @@ export const specialDeals: Car[] = [
     ],
     image: "https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=800&q=80",
     discountPercentage: 25,
-  },
-];
-
-export const premiumCars: Car[] = [
-  {
-    id: "11",
-    name: "Mercedes-Benz S-Class",
-    price: 299,
-    city: "Los Angeles",
-    year: 2023,
-    carClass: "Luxury",
-    bodyType: "Sedan",
-    engineType: "Hybrid",
-    seats: 5,
-    features: [
-      { name: "Massage Seats" },
-      { name: "Night Vision" },
-      { name: "Burmester 3D Sound" },
-      { name: "Augmented Reality Nav" },
-      { name: "Rear Executive Seats" },
-    ],
-    image: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=800&q=80",
-    isNew: true,
-    horsepower: 429,
-    acceleration: "4.9s",
-    transmission: "Automatic",
-  },
-  {
-    id: "12",
-    name: "Porsche 911 Carrera",
-    price: 349,
-    city: "Miami",
-    year: 2023,
-    carClass: "Sports",
-    bodyType: "Coupe",
-    engineType: "Petrol",
-    seats: 2,
-    features: [
-      { name: "Sport Chrono Package" },
-      { name: "PASM Sport Suspension" },
-      { name: "Sports Exhaust System" },
-      { name: "Rear Axle Steering" },
-      { name: "Carbon Fiber Interior" },
-    ],
-    image: "https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=800&q=80",
-    isPopular: true,
-    horsepower: 443,
-    acceleration: "3.7s",
-    transmission: "PDK",
-  },
-  {
-    id: "13",
-    name: "Range Rover Sport",
-    price: 260,
-    city: "New York",
-    year: 2023,
-    carClass: "Luxury",
-    bodyType: "SUV",
-    engineType: "Hybrid",
-    seats: 7,
-    features: [
-      { name: "Dynamic Response" },
-      { name: "Terrain Response 2" },
-      { name: "Meridian Sound" },
-      { name: "Head-Up Display" },
-      { name: "Soft Close Doors" },
-    ],
-    image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=800&q=80",
-    isNew: true,
-    horsepower: 355,
-    acceleration: "6.2s",
-    transmission: "Automatic",
-  },
-  {
-    id: "14",
-    name: "Audi RS e-tron GT",
-    price: 315,
-    city: "Chicago",
-    year: 2023,
-    carClass: "Sports",
-    bodyType: "Sportback",
-    engineType: "Electric",
-    seats: 4,
-    features: [
-      { name: "Quattro AWD" },
-      { name: "Carbon Roof" },
-      { name: "Matrix LED Headlights" },
-      { name: "800V Fast Charging" },
-      { name: "Bang & Olufsen Sound" },
-    ],
-    image: "https://images.unsplash.com/photo-1580274455191-1c62238fa333?auto=format&fit=crop&w=800&q=80",
-    isNew: true,
-    horsepower: 637,
-    acceleration: "3.1s",
-    transmission: "Automatic",
   },
 ];

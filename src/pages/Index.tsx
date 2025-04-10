@@ -1,35 +1,148 @@
-
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Star as StarIcon, MapPin } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import WhyChooseUs from "@/components/WhyChooseUs";
+import Features from "@/components/Features";
 import HowItWorks from "@/components/HowItWorks";
 import FeaturedCars from "@/components/FeaturedCars";
 import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
-import { premiumCars } from "@/data/cars";
-import { locations } from "@/data/locations";
-import { testimonials } from "@/data/testimonials";
 
-// Updated Car interface to match the one in src/data/cars.ts
-// Making transmission optional to resolve the TypeScript error
+// Extended Car interface to include rating and reviewCount
 interface Car {
   id: string;
   name: string;
   image: string;
-  type?: string;
+  type: string;
   price: number;
   year: number;
   seats: number;
-  transmission?: string; // Changed from required to optional
+  transmission: string;
   rating?: number;
   reviewCount?: number;
-  carClass?: string;
-  bodyType?: string;
 }
+
+// Sample cars data with ratings
+const premiumCars: Car[] = [
+  {
+    id: "1",
+    name: "Mercedes-Benz S-Class",
+    image: "/placeholder.svg",
+    type: "Luxury Sedan",
+    price: 299,
+    year: 2023,
+    seats: 5,
+    transmission: "Automatic",
+    rating: 4.9,
+    reviewCount: 142
+  },
+  {
+    id: "2",
+    name: "BMW 7 Series",
+    image: "/placeholder.svg",
+    type: "Luxury Sedan",
+    price: 289,
+    year: 2023,
+    seats: 5,
+    transmission: "Automatic",
+    rating: 4.8,
+    reviewCount: 128
+  },
+  {
+    id: "3",
+    name: "Audi A8",
+    image: "/placeholder.svg",
+    type: "Luxury Sedan",
+    price: 279,
+    year: 2023,
+    seats: 5,
+    transmission: "Automatic",
+    rating: 4.7,
+    reviewCount: 116
+  }
+];
+
+// Define sample car data for FeaturedCars component
+const featuredCarsData = [
+  {
+    id: "4",
+    name: "Toyota Camry",
+    price: 65,
+    city: "New York",
+    year: 2022,
+    carClass: "Sedan",
+    bodyType: "Sedan",
+    engineType: "Hybrid",
+    seats: 5,
+    features: [{ name: "GPS" }, { name: "Bluetooth" }, { name: "Cruise Control" }],
+    image: "/placeholder.svg"
+  },
+  {
+    id: "5",
+    name: "Honda CR-V",
+    price: 75,
+    city: "Los Angeles",
+    year: 2022,
+    carClass: "SUV",
+    bodyType: "SUV",
+    engineType: "Gasoline",
+    seats: 5,
+    features: [{ name: "GPS" }, { name: "Bluetooth" }, { name: "Backup Camera" }],
+    image: "/placeholder.svg"
+  },
+  {
+    id: "6",
+    name: "Ford Mustang",
+    price: 120,
+    city: "Miami",
+    year: 2021,
+    carClass: "Sports",
+    bodyType: "Coupe",
+    engineType: "Gasoline",
+    seats: 4,
+    features: [{ name: "Leather Seats" }, { name: "Premium Sound" }, { name: "Convertible" }],
+    image: "/placeholder.svg",
+    discountPercentage: 15
+  }
+];
+
+const locations = [
+  {
+    name: "New York",
+    image: "/placeholder.svg",
+    description: "Explore the city that never sleeps with our premium car rentals.",
+  },
+  {
+    name: "Los Angeles",
+    image: "/placeholder.svg",
+    description: "Discover sunny LA in style with our wide selection of vehicles.",
+  },
+  {
+    name: "Miami",
+    image: "/placeholder.svg",
+    description: "Experience the vibrant nightlife and beaches of Miami with our luxury cars.",
+  },
+];
+
+const testimonials = [
+  {
+    name: "Alice Johnson",
+    review: "Uncar made renting a car so easy and enjoyable. The service was top-notch!",
+    rating: 5,
+  },
+  {
+    name: "Bob Smith",
+    review: "I loved the variety of cars available. Found the perfect one for my weekend getaway.",
+    rating: 4,
+  },
+  {
+    name: "Charlie Brown",
+    review: "Great prices and excellent customer support. Will definitely use Uncar again.",
+    rating: 5,
+  },
+];
 
 const Index = () => {
   const [isMounted, setIsMounted] = useState(false);
@@ -42,10 +155,11 @@ const Index = () => {
     <div className="min-h-screen">
       <Navbar />
       <Hero />
-      <WhyChooseUs />
+      <Features />
       <HowItWorks />
-      <FeaturedCars title="Our Premium Collection" cars={premiumCars} />
+      <FeaturedCars title="Featured Cars" cars={featuredCarsData} />
 
+      {/* Premium Rentals Section */}
       <section className="py-20 bg-graphite text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center mb-16">
@@ -58,7 +172,7 @@ const Index = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {premiumCars.map((car: Car) => (
+            {premiumCars.map((car) => (
               <motion.div 
                 key={car.id} 
                 className="featured-car glass-card"
@@ -79,7 +193,7 @@ const Index = () => {
                     <h3 className="text-xl font-bold">{car.name}</h3>
                     <span className="text-xl font-bold">${car.price}<span className="text-sm opacity-70">/day</span></span>
                   </div>
-                  <p className="text-sm opacity-70 mb-4">{car.bodyType || car.type} • {car.year} • {car.seats} Seats • {car.transmission}</p>
+                  <p className="text-sm opacity-70 mb-4">{car.type} • {car.year} • {car.seats} Seats • {car.transmission}</p>
                   
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-1">
@@ -110,6 +224,7 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Locations Section */}
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center mb-16">
@@ -148,6 +263,7 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Testimonials Section */}
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center mb-16">
